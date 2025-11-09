@@ -263,7 +263,7 @@ public class WireGuardAdapter {
                     self.logEndpointResolutionResults(resolutionResults)
 
                     wgSetConfig(handle, wgConfig)
-                    #if os(iOS)
+                    #if os (iOS) || os(tvOS)
                     wgDisableSomeRoamingForBrokenMobileSemantics(handle)
                     #endif
 
@@ -377,7 +377,7 @@ public class WireGuardAdapter {
         if handle < 0 {
             throw WireGuardAdapterError.startWireGuardBackend(handle)
         }
-        #if os(iOS)
+        #if os (iOS) || os(tvOS)
         wgDisableSomeRoamingForBrokenMobileSemantics(handle)
         #endif
         return handle
